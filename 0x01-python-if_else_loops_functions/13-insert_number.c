@@ -2,34 +2,23 @@
 #include <stdlib.h>
 listint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *currnt = *head, *forward = *head;
+	listint_t *currnt = *head, *forward = NULL;
 
-	if (*head == NULL || forward->n > number)
-	{
 		forward = malloc(sizeof(listint_t));
 		if (forward == NULL)
 				return (NULL);
 		forward->n = number;
+	if (*head == NULL || (*head)->n > number)
+	{
 		forward->next = *head;
 		*head = forward;
 		return (*head);
 	}
 
-	while (currnt != NULL)
-	{
-		forward = forward->next;
-		if (forward == NULL || forward->n > number)
-		{
-			forward = malloc(sizeof(listint_t));
-			if (forward == NULL)
-				return (NULL);
-			forward->n = number;
-			forward->next = currnt->next;
-			currnt->next = forward;
-			return (*head);
-		}
+	while ( currnt->next != NULL && currnt->next->n < number)
 		currnt = currnt->next;
-	}
 
-	return (NULL);
+	forward->next = currnt->next;
+	currnt->next = forward;
+	return (*head);
 }
