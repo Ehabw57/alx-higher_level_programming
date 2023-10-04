@@ -6,13 +6,17 @@
 */
 int check_cycle(listint_t *list)
 {
-	listint_t *currnt;
-	currnt = list;
+	listint_t *tor = NULL, *hare = NULL, *tmp = NULL;
+	tor = list;
+	tmp = list->next;
+	hare = tmp->next;
 
-	while(currnt != NULL)
+	while(tmp->next != NULL)
 	{
-		currnt = currnt->next;
-		if (currnt == list)
+		tmp = hare->next;
+		hare = tmp->next;
+		tor = tor->next;
+		if (hare == tor)
 		return (1);
 	}
 	return (0);
