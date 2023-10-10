@@ -12,7 +12,7 @@ void print_python_list_info(PyObject *p)
 	{
 		name = PyList_GetItem(p, i);
 		type = Py_TYPE(name)->tp_name;
-		printf("Element %ld: %s\n", i, type);
+		printf("Element %ld: %s\n", i,  type->ob_type->tp_name);
 		i++;
 	}
 }
