@@ -22,8 +22,8 @@ class Square:
         elif size < 0:
             raise ValueError("size must be >= 0")
         if (
-            type(position[1]) is not type(position[0]) is not int
-            or len(position) != 2
+            len(position) != 2
+            or type(position[1]) is not type(position[0]) is not int
             or position[0] < 0
             or position[1] < 0
         ):
@@ -75,13 +75,21 @@ class Square:
 
     @property
     def position(self):
+        """
+        Acsscing the data of postion attribute
+
+        Return the value of postion attribute
+        """
         return self.__position
 
     @position.setter
     def position(self, value):
+        """
+        Sets the value of postion attribute
+        """
         if (
-            type(value[1]) is not type(value[0]) is not int
-            or len(value) != 2
+            len(value) != 2
+            or type(value[1]) is not type(value[0]) is not int
             or value[0] < 0
             or value[1] < 0
         ):
