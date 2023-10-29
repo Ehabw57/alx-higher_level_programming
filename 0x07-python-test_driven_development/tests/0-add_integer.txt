@@ -1,0 +1,28 @@
+"""
+>>> import sys
+>>> sys.path.append('../')
+>>> add_integer = __import__('0-add_integer').add_integer
+
+>>> add_integer(12, 3) #basic add 
+15
+
+>>> add_integer(12, -11) #adds negative numbers
+1
+
+>>> add_integer("heelo", 12) #a is an strign
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: a must be an integer
+
+>>> add_integer(32, "wow") #b is an string
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: b must be an integer
+
+>>> add_integer(12.32, 32.5) #adds float
+44
+
+>>> add_integer(12) #not sec argurmnt
+110
+
+"""
