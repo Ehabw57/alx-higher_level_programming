@@ -1,6 +1,4 @@
 """
->>> import sys
->>> sys.path.append('../')
 >>> add_integer = __import__('0-add_integer').add_integer
 
 >>> add_integer(12, 3) #basic add 
@@ -24,5 +22,15 @@ TypeError: b must be an integer
 
 >>> add_integer(12) #not sec argurmnt
 110
+
+>>> add_integer([3], 10) #passing a list
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: a must be an integer
+
+>>> add_integer(3, None) #passing None
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: b must be an integer
 
 """
