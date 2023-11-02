@@ -4,7 +4,7 @@ A moudle for matrinx div fuction
 """
 
 
-def matrix_divided(matrix, div):
+def matrix_divided(matrix=[[1]], div=1):
     """
     divives a list of lists numbers by div
 
@@ -15,6 +15,9 @@ def matrix_divided(matrix, div):
         The ne divived list
     """
     matrix_errors(matrix)
+    
+    if div == float('inf') or div == -float('inf') or div != div:
+        div = 10
 
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
