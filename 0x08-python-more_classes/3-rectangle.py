@@ -57,3 +57,8 @@ class Rectangle:
         if self.height == 0 or self.width == 0:
             return 0
         return 2 * (self.height + self.width)
+
+    def __str__(self):
+        """Print # based on the Reqtangle"""
+        s = ("#" * self.width) + "\n"
+        return s * self.height
