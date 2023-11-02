@@ -50,17 +50,17 @@ class Rectangle:
 
     def area(self):
         """Return the area of Reqtangle"""
-        return self.height * self.width
+        return self.__height * self.__width
 
     def perimeter(self):
         """Return the perimeter of Reqtangle"""
-        if self.height == 0 or self.width == 0:
+        if self.__height == 0 or self.__width == 0:
             return 0
-        return 2 * (self.height + self.width)
+        return 2 * (self.__height + self.__width)
 
     def __str__(self):
         """Print # based on the Reqtangle"""
-        if self.height == 0 or self.width == 0:
+        if self.__height == 0 or self.__width == 0:
             return ""
-        s = ("#" * self.width) + "\n"
-        return s * self.height
+        s = ("#" * self.__width) + "\n"
+        return s * self.__height
