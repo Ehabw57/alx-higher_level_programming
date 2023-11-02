@@ -19,11 +19,7 @@ class Rectangle:
     @classmethod
     def square(cls, size=0):
         """intialize a new rq as sqr"""
-        if not isinstance(size, int):
-            raise TypeError("width must be an integer")
-        if size < 0:
-            raise ValueError("width must be >= 0")
-        return cls(size, size)
+        return (cls(size, size))
 
     def __init__(self, width=0, height=0):
         """
