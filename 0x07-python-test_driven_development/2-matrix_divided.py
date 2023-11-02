@@ -15,9 +15,6 @@ def matrix_divided(matrix=[[1]], div=1):
         The ne divived list
     """
     matrix_errors(matrix)
-    
-    if div == float('inf') or div == -float('inf') or div != div:
-        div = 10
 
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
