@@ -70,7 +70,7 @@ class Rectangle:
     def __repr__(self):
         """Returns the diminstions of Rq"""
         return f"Rectangle({self.width}, {self.height})"
-    
+
     def __del__(self):
         """Delet an instance of a class"""
         print('Bye rectangle...')
