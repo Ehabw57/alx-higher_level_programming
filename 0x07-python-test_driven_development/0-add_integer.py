@@ -13,8 +13,8 @@ def add_integer(a, b=98):
     Return:
         The sum of both a and b
     """
-    if type(a) not in [int, float] or a is None:
+    if a is None or type(a) not in [int, float]:
         raise TypeError("a must be an integer")
-    if type(b) not in [int, float] or b is None:
+    if b is None or type(b) not in [int, float]:
         raise TypeError("b must be an integer")
     return int(a) + int(b)
