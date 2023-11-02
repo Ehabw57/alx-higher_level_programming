@@ -62,5 +62,9 @@ class Rectangle:
         """Print # based on the Reqtangle"""
         if self.__height == 0 or self.__width == 0:
             return ""
-        s = ("#" * self.__width) + "\n"
-        return s * self.__height
+        rect = []
+        for i in range(self.__height):
+            [rect.append('#') for j in range(self.__width)]
+            if i != self.__height - 1:
+                rect.append("\n")
+        return ("".join(rect))
