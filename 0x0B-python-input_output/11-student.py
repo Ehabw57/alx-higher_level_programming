@@ -16,3 +16,8 @@ class Student:
             return new
 
         return self.__dict__
+
+    def reload_from_json(self, json):
+        """replaces all attributes of the SELF"""
+        for attr in json.keys():
+            self.__dict__[attr] = json[attr]
