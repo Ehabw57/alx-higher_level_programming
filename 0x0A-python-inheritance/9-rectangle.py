@@ -6,7 +6,8 @@ BaseGeometry = __import__("7-base_geometry").BaseGeometry
 class Rectangle(BaseGeometry):
     """A class representing a rectangle.
 
-    This class inherits from the BaseGeometry class and provides methods to calculate
+    This class inherits from the BaseGeometry class
+    and provides methods to calculate
     the area and retrieve basic information about a rectangle.
     """
 

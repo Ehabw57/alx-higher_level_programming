@@ -7,7 +7,8 @@ class Square(Rectangle):
     """A class representing a square.
 
     This class inherits from the Rectangle class and represents a square shape.
-    It provides methods to calculate the area and a string representation of the square.
+    It provides methods to calculate the area
+    and a string representation of the square.
     """
 
     def __init__(self, size):

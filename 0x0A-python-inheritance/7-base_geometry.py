@@ -6,14 +6,17 @@ class BaseGeometry:
     """A base class for geometry-related operations.
 
     This class provides a basic structure for geometry-related operations.
-    It defines a placeholder method for calculating the area and a method for integer validation.
+    It defines a placeholder method for calculating the area
+    and a method for integer validation.
     """
 
     def area(self):
         """Calculate the area of the shape.
 
-        This method is a placeholder and should be overridden by subclasses.
-        It raises an exception to indicate that the area calculation is not implemented.
+        This method is a placeholder and
+        should be overridden by subclasses.
+        It raises an exception to indicate that the area calculation
+        is not implemented.
 
         Raises:
             Exception: Indicates that the area() method is not implemented.
