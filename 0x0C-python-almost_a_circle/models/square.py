@@ -5,18 +5,28 @@ import json
 
 
 class Rectangle(Base):
-    """The Rectangle class represents a rectangle object."""
+    """
+    The Rectangle class represents a rectangle object.
+
+    Attributes:
+        width (int): The width of the rectangle.
+        height (int): The height of the rectangle.
+        x (int): The x-coordinate of the rectangle's position.
+        y (int): The y-coordinate of the rectangle's position.
+        id (int): The ID of the rectangle.
+    """
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """Initialize a new Rectangle instance.
+        """
+        Initialize a new Rectangle instance.
 
         Args:
             width (int): The width of the rectangle.
             height (int): The height of the rectangle.
-            x (int, optional): The x-coordinate of the rectangle's
-            position. Defaults to 0.
+            x (int, optional): The x-coordinate of the rectangle's position.
+                Defaults to 0.
             y (int, optional): The y-coordinate of the rectangle's position.
-            Defaults to 0.
+                Defaults to 0.
             id (int, optional): The ID of the rectangle. Defaults to None.
         """
         self.width = width
@@ -27,12 +37,15 @@ class Rectangle(Base):
 
     @property
     def width(self):
-        """int: The width of the rectangle."""
+        """
+        int: The width of the rectangle.
+        """
         return self.__width
 
     @width.setter
     def width(self, value):
-        """Set the width of the rectangle.
+        """
+        Set the width of the rectangle.
 
         Args:
             value (int): The width value to set.
@@ -49,12 +62,15 @@ class Rectangle(Base):
 
     @property
     def height(self):
-        """int: The height of the rectangle."""
+        """
+        int: The height of the rectangle.
+        """
         return self.__height
 
     @height.setter
     def height(self, value):
-        """Set the height of the rectangle.
+        """
+        Set the height of the rectangle.
 
         Args:
             value (int): The height value to set.
@@ -71,12 +87,15 @@ class Rectangle(Base):
 
     @property
     def x(self):
-        """int: The x-coordinate of the rectangle's position."""
+        """
+        int: The x-coordinate of the rectangle's position.
+        """
         return self.__x
 
     @x.setter
     def x(self, value):
-        """Set the x-coordinate of the rectangle's position.
+        """
+        Set the x-coordinate of the rectangle's position.
 
         Args:
             value (int): The x-coordinate value to set.
@@ -93,12 +112,15 @@ class Rectangle(Base):
 
     @property
     def y(self):
-        """int: The y-coordinate of the rectangle's position."""
+        """
+        int: The y-coordinate of the rectangle's position.
+        """
         return self.__y
 
     @y.setter
     def y(self, value):
-        """Set the y-coordinate of the rectangle's position.
+        """
+        Set the y-coordinate of the rectangle's position.
 
         Args:
             value (int): The y-coordinate value to set.
@@ -114,7 +136,8 @@ class Rectangle(Base):
         self.__y = value
 
     def area(self):
-        """Calculate the area of the rectangle.
+        """
+        Calculate the area of the rectangle.
 
         Returns:
             int: The area of the rectangle.
@@ -128,7 +151,8 @@ class Rectangle(Base):
             print((" " * self.x) + ("#" * self.width))
 
     def __str__(self):
-        """Return a string representation of the rectangle.
+        """
+        Return a string representation of the rectangle.
 
         Returns:
             str: A string representation of the rectangle.
@@ -137,20 +161,22 @@ class Rectangle(Base):
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {s}"
 
     def update(self, *args, **kwargs):
-        """Update the attributes of the rectangle.
+        """
+        Update the attributes of the rectangle.
 
         Args:
             *args: Variable number of arguments.
-            The expected order is id, width, height, x, y.
+                The expected order is id, width, height, x, y.
             **kwargs: Variable number of keyword arguments.
-            The keys should match the attribute names.
+                The keys should match the attribute names.
 
         Note:
             If both *args and **kwargs are passed, *args takes precedence.
 
         Raises:
-            IndexError: If *args is provided but
-            not all the expected arguments areincluded."""
+            IndexError: If *args is provided but not all the expected
+            arguments are included.
+        """
         largs = kwargs.values()
         if args:
             try:
