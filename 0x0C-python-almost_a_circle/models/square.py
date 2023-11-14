@@ -1,207 +1,92 @@
 #!/usr/bin/python3
-"""This module defines the Rectangle class."""
-from models.base import Base
-import json
+"""some docstring goes here"""
+from models.rectangle import Rectangle
 
 
-class Rectangle(Base):
+class Square(Rectangle):
     """
-    The Rectangle class represents a rectangle object.
+    The Square class represents a square object,
+    which is a special case of a rectangle.
 
     Attributes:
-        width (int): The width of the rectangle.
-        height (int): The height of the rectangle.
-        x (int): The x-coordinate of the rectangle's position.
-        y (int): The y-coordinate of the rectangle's position.
-        id (int): The ID of the rectangle.
+        size (int): The size of the square.
+        x (int): The x-coordinate of the square's position.
+        y (int): The y-coordinate of the square's position.
+        id (int): The ID of the square.
     """
 
-    def __init__(self, width, height, x=0, y=0, id=None):
+    def __init__(self, size, x=0, y=0, id=None):
         """
-        Initialize a new Rectangle instance.
+        Initialize a new Square instance.
 
         Args:
-            width (int): The width of the rectangle.
-            height (int): The height of the rectangle.
-            x (int, optional): The x-coordinate of the rectangle's position.
+            size (int): The size of the square.
+            x (int, optional): The x-coordinate of the square's position.
                 Defaults to 0.
-            y (int, optional): The y-coordinate of the rectangle's position.
+            y (int, optional): The y-coordinate of the square's position.
                 Defaults to 0.
-            id (int, optional): The ID of the rectangle. Defaults to None.
+            id (int, optional): The ID of the square. Defaults to None.
         """
-        self.width = width
-        self.height = height
-        self.x = x
-        self.y = y
-        super().__init__(id)
-
-    @property
-    def width(self):
-        """
-        int: The width of the rectangle.
-        """
-        return self.__width
-
-    @width.setter
-    def width(self, value):
-        """
-        Set the width of the rectangle.
-
-        Args:
-            value (int): The width value to set.
-
-        Raises:
-            TypeError: If the width is not an integer.
-            ValueError: If the width is less than or equal to 0.
-        """
-        if not isinstance(value, int) or type(value) is not int:
-            raise TypeError("width must be an integer")
-        if value <= 0:
-            raise ValueError("width must be > 0")
-        self.__width = value
-
-    @property
-    def height(self):
-        """
-        int: The height of the rectangle.
-        """
-        return self.__height
-
-    @height.setter
-    def height(self, value):
-        """
-        Set the height of the rectangle.
-
-        Args:
-            value (int): The height value to set.
-
-        Raises:
-            TypeError: If the height is not an integer.
-            ValueError: If the height is less than or equal to 0.
-        """
-        if not isinstance(value, int) or type(value) is not int:
-            raise TypeError("height must be an integer")
-        if value <= 0:
-            raise ValueError("height must be > 0")
-        self.__height = value
-
-    @property
-    def x(self):
-        """
-        int: The x-coordinate of the rectangle's position.
-        """
-        return self.__x
-
-    @x.setter
-    def x(self, value):
-        """
-        Set the x-coordinate of the rectangle's position.
-
-        Args:
-            value (int): The x-coordinate value to set.
-
-        Raises:
-            TypeError: If the x-coordinate is not an integer.
-            ValueError: If the x-coordinate is less than 0.
-        """
-        if not isinstance(value, int) or type(value) is not int:
-            raise TypeError("x must be an integer")
-        if value < 0:
-            raise ValueError("x must be >= 0")
-        self.__x = value
-
-    @property
-    def y(self):
-        """
-        int: The y-coordinate of the rectangle's position.
-        """
-        return self.__y
-
-    @y.setter
-    def y(self, value):
-        """
-        Set the y-coordinate of the rectangle's position.
-
-        Args:
-            value (int): The y-coordinate value to set.
-
-        Raises:
-            TypeError: If the y-coordinate is not an integer.
-            ValueError: If the y-coordinate is less than 0.
-        """
-        if not isinstance(value, int) or type(value) is not int:
-            raise TypeError("y must be an integer")
-        if value < 0:
-            raise ValueError("y must be >= 0")
-        self.__y = value
-
-    def area(self):
-        """
-        Calculate the area of the rectangle.
-
-        Returns:
-            int: The area of the rectangle.
-        """
-        return self.height * self.width
-
-    def display(self):
-        """Display the rectangle on the console."""
-        print("\n" * self.y, end="")
-        for _ in range(self.height):
-            print((" " * self.x) + ("#" * self.width))
+        super().__init__(size, size, x, y, id)
 
     def __str__(self):
         """
-        Return a string representation of the rectangle.
+        Return a string representation of the square.
 
         Returns:
-            str: A string representation of the rectangle.
+            str: A string representation of the square.
         """
-        s = f"{self.width}/{self.height}"
-        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {s}"
+        return f"[Square] ({self.id}) ({self.x})/({self.y}) - ({self.width})"
+
+    @property
+    def size(self):
+        """
+        int: The size of the square.
+        """
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        """
+        Set the size of the square.
+
+        Args:
+            value (int): The size value to set.
+
+        Note:
+            This method also updates the width and height attributes
+            to maintain square proportions.
+        """
+        self.width = value
+        self.height = value
 
     def update(self, *args, **kwargs):
         """
-        Update the attributes of the rectangle.
+        Update the attributes of the square.
 
         Args:
             *args: Variable number of arguments.
-                The expected order is id, width, height, x, y.
+                The expected order is id, size, x, y.
             **kwargs: Variable number of keyword arguments.
                 The keys should match the attribute names.
 
         Note:
+            This method overrides the base class update method and calls
+            it using super().
             If both *args and **kwargs are passed, *args takes precedence.
-
-        Raises:
-            IndexError: If *args is provided but not all the expected
-            arguments are included.
         """
-        largs = kwargs.values()
-        if args:
-            try:
-                self.id = args[0]
-                self.width = args[1]
-                self.height = args[2]
-                self.x = args[3]
-                self.y = args[4]
-            except IndexError:
-                return
-        else:
-            for key, val in kwargs.items():
-                self.__setattr__(key, val)
+        super().update(*args, **kwargs)
 
     def to_dictionary(self):
         """
-        Convert the Rectangle object to a dictionary representation.
+        Convert the Square object to a dictionary representation.
 
         Returns:
-            dict: A dictionary representation of the Rectangle object.
+            dict: A dictionary representation of the Square object.
         """
         return {
             "id": self.id,
-            "width": self.width,
-            "height": self.height,
+            "size": self.width,
             "x": self.x,
             "y": self.y,
         }

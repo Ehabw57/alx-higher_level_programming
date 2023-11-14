@@ -5,12 +5,19 @@ import json
 
 
 class Base:
-    """The Base class represents a base object."""
+    """
+    The Base class represents a base object.
+
+    Attributes:
+        __nb_objects (int): The count of objects created.
+        id (int): The ID of the object.
+    """
 
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """Initialize a new Base instance.
+        """
+        Initialize a new Base instance.
 
         Args:
             id (int, optional): The ID of the object. Defaults to None.
