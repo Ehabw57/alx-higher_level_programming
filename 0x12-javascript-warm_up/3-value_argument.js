@@ -1,6 +1,7 @@
 #!/usr/bin/node
-if (process.argv.length < 3) {
+const args = process.argv.slice(2);
+if (!args[0]) {
   console.log('No argument');
 } else {
-  console.log(process.argv[2]);
+  console.log(args[0]);
 }
