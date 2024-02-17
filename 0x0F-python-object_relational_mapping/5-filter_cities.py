@@ -13,8 +13,6 @@ if __name__ == '__main__':
                 'WHERE states.name = "{}"'.format(args[3]))
 
     data = cur.fetchall()
-    for row in data:
-        print(row[0] + ", " if row != data[-1]
-              else f"{data[-1][-1]}\n", end='')
+    print(", ".join(city[0] for city in data))
     cur.close()
     db.close()
