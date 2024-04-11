@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""A moudlue that lists all the states
-in htbn_0e_0d_usa database using MySQLdb"""
+"""This moudle is a secure version of the last script"""
 if __name__ == '__main__':
     import MySQLdb
     from sys import argv
@@ -9,7 +8,8 @@ if __name__ == '__main__':
                            user=args[0], passwd=args[1], db=args[2])
     cur = conn.cursor()
     cur.execute("""SELECT * FROM states
-    ORDER BY states.id ASC""")
+    WHERE BINARY `name` LIKE %s
+    ORDER BY states.id ASC""", (args[3],))
     states = cur.fetchall()
     for state in states:
         print(state)

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""A moudlue that lists all the states
-in htbn_0e_0d_usa database using MySQLdb"""
+"""A moudle that list all states statrt with
+N (capital n)"""
 if __name__ == '__main__':
     import MySQLdb
     from sys import argv
@@ -8,8 +8,10 @@ if __name__ == '__main__':
     conn = MySQLdb.connect(host='localhost', port=3306,
                            user=args[0], passwd=args[1], db=args[2])
     cur = conn.cursor()
-    cur.execute("""SELECT * FROM states
-    ORDER BY states.id ASC""")
+    cur.execute("SELECT *\
+    FROM states\
+    WHERE BINARY `name` LIKE '{}'\
+    ORDER BY states.id ASC".format(args[3]))
     states = cur.fetchall()
     for state in states:
         print(state)
