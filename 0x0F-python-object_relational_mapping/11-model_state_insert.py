@@ -8,7 +8,7 @@ if __name__ == '__main__':
 
     usrname, password, dbname = argv[1:]
     engine = create_engine('mysql://{}:{}@localhost:3306/{}'
-                           .format(usrname, password, dbname), echo=True)
+                           .format(usrname, password, dbname))
 
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
