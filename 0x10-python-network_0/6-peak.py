@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """Hehe find the peak moudel"""
 
+
 def find_peak(list_of_integers):
+    """Finds a peak in a list of ints"""
     if not list_of_integers:
         return None
 
