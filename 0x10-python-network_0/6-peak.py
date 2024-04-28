@@ -1,22 +1,15 @@
 #!/usr/bin/python3
-"""A script of function find_peak"""
-
-
-def find_peak(ints):
-    """Finds a peak in a list of ints"""
-    if len(ints) < 1:
+def find_peak(list_of_integers):
+    if not list_of_integers:
         return None
 
-    n = len(ints) // 2
-    try:
-        if (ints[n] >= ints[n+1] and ints[n] >= ints[-1]):
-            return ints[n]
+    left, right = 0, len(list_of_integers) - 1
+
+    while left < right:
+        mid = (left + right) // 2
+        if list_of_integers[mid] < list_of_integers[mid + 1]:
+            left = mid + 1
         else:
-            peak = find_peak(ints[n:])
-    except IndexError:
-        return None
+            right = mid
 
-    if (peak is not None):
-        return peak
-    else:
-        find_peak(ints[0:n])
+    return list_of_integers[left]
