@@ -12,5 +12,5 @@ if __name__ == "__main__":
     for commit in content:
         sha = commit.get("sha")
         name = commit.get("commit")
-        name = name.get("committer")
+        name = name.get("author")
         print("{}: {}".format(sha, name.get("name")))
