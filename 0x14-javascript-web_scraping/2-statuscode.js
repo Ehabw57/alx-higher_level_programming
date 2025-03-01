@@ -1,7 +1,6 @@
 #!/usr/bin/node
-const URL = process.argv[2];
-async function main () {
-  const response = await fetch(URL);
-  console.log(response.status);
-}
-main();
+const request = require('request');
+request(process.argv[2], function (error, response) {
+  if (error) console.error(error);
+  else console.log('code:', response.statusCode);
+});
