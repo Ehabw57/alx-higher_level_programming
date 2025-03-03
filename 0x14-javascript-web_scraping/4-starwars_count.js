@@ -1,15 +1,12 @@
 #!/usr/bin/node
 const request = require('request');
 const filmURL = process.argv[2];
-request(filmURL + '/1', (err, resopnd, body) => {
-  if (err) {
-    console.log(err);
-  }
-  const charURL = JSON.parse(body).characters[14];
-  request(charURL, (err, respond, body) => {
-    if (err) {
-      console.log(err);
-    }
-    console.log(JSON.parse(body).films.length);
-  });
+request(filmURL, (err, resopnd, body) => {
+  if (err) return console.log(err);
+  const films = JSON.parse(body).results;
+  let count = 0;
+  const id = 16;
+  const charcterURL = `https://swapi-api.alx-tools.com/api/people/${id}/`;
+  for (const film of films) if (film.characters.includes(charcterURL)) count++;
+  console.log(count);
 });
